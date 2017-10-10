@@ -2,7 +2,12 @@
 # FROM debian:sid
 FROM debian:stable-slim
 
-LABEL version="1.0.0"
+LABEL "version"="1.0.3"
+LABEL "chrome-version"="61.0.3163.100"
+LABEL "github-repo"="ttonyh/chrome-headless-stable"
+
+ENV CHROMEHOME=/home/chrome
+ENV DATADIR=$CHROMEHOME/data
 
 # Install Chrome
 RUN apt-get update && apt-get install -y \
@@ -29,9 +34,12 @@ RUN apt-get update && apt-get install -y \
 
 # Add chrome user
 RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
-    && mkdir -p /home/chrome/Downloads && chown -R chrome:chrome /home/chrome
+    && mkdir -p /home/chrome/Downloads && chown -R chrome:chrome $CHROMEHOME
+
+RUN mkdir -p $DATADIR && chown -R chrome:chrome $DATADIR
 
 COPY local.conf /etc/fonts/local.conf
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # Run Chrome as non privileged user
 USER chrome
@@ -39,13 +47,7 @@ USER chrome
 # Expose port 9222
 EXPOSE 9222
 
-ENTRYPOINT [ "/usr/bin/dumb-init", "--", \
-             "/usr/bin/google-chrome", \
-             "--disable-gpu", \
-             "--headless", \
-             "--remote-debugging-address=0.0.0.0", \
-             "--remote-debugging-port=9222", \
-             "--user-data-dir=/data" ]
+ENTRYPOINT [ "/usr/bin/dumb-init", "--", "/usr/local/bin/entrypoint.sh" ]
 
 
 
