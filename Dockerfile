@@ -2,7 +2,7 @@
 # FROM debian:sid
 FROM debian:stable-slim
 
-LABEL "version"="1.0.5"
+LABEL "version"="1.3.0"
 LABEL "chrome-version"="64.0.3282.186"
 LABEL "github-repo"="ttonyh/chrome-headless-stable"
 
