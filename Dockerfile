@@ -1,6 +1,6 @@
 # Base docker image
 # FROM debian:sid
-FROM debian:stable-slim
+FROM debian:9.3-slim
 
 LABEL "version"="1.3.0"
 LABEL "chrome-version"="64.0.3282.186"
