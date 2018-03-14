@@ -2,8 +2,8 @@
 # FROM debian:sid
 FROM debian:9.3-slim
 
-LABEL "version"="1.3.0"
-LABEL "chrome-version"="64.0.3282.186"
+LABEL "version"="1.4.0"
+LABEL "chrome-version"="65.0.3325.162"
 LABEL "github-repo"="ttonyh/chrome-headless-stable"
 
 ENV CHROMEHOME=/home/chrome
