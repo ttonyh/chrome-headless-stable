@@ -1,11 +1,13 @@
 # Base docker image
 # FROM debian:sid
-FROM debian:9.3-slim
+FROM debian:9.4-slim
 
-LABEL "version"="1.4.0"
-LABEL "chrome-version"="65.0.3325.162"
+LABEL "version"="1.7.0"
+LABEL "chrome-version"="66.0.3359.26"
 LABEL "github-repo"="ttonyh/chrome-headless-stable"
 
+ENV CHROMEAPPNAME=google-chrome-dev
+# ENV CHROMEAPPNAME=google-chrome-stable
 ENV CHROMEHOME=/home/chrome
 ENV DATADIR=$CHROMEHOME/data
 
@@ -27,7 +29,7 @@ RUN apt-get update && apt-get install -y \
 	&& curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
 	&& echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
 	&& apt-get update && apt-get install -y \
-	google-chrome-stable \
+	$CHROMEAPPNAME \
 	--no-install-recommends \
 	&& apt-get purge --auto-remove -y curl \
 	&& rm -rf /var/lib/apt/lists/*
