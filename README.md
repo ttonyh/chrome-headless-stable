@@ -1,5 +1,5 @@
 # chrome-headless-stable
-Stable version of Google Chrome browser in headless mode.
+Stable version of Google Chrome browser in headless mode. Created mainly for AWS/ECS Compatibility.
 
 
 
