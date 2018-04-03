@@ -28,10 +28,15 @@ CHROMECMD="/usr/bin/$CHROMEAPPNAME \
 --safebrowsing-disable-auto-update"
 
 
+if [ "$OPTS_NO_AUTO_RESPAWN" = 'true' ]; then
+    $($CHROMECMD);
+else
+    until $($CHROMECMD); do
+        echo "Chrome crashed with exit code $?. Respawning.." >&2
+        sleep 1
+    done
+fi
 
 
 
-until $($CHROMECMD); do
-    echo "Chrome crashed with exit code $?. Respawning.." >&2
-    sleep 1
-done
+

@@ -3,7 +3,9 @@ Stable version of Google Chrome browser in headless mode. Created mainly for AWS
 
 
 
+# ENV VARS
 
+OPTS_NO_AUTO_RESPAWN = Disable auto respawn of chrome process
 
 
 

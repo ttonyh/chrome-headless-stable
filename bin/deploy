@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+
+
+# TODO: Write deploy script...
+
+
+# 1) Get version from Dockerfile: LABEL "version"="x.x.x"
+# VERSION=x.x.x
+
+# 2) RUN:
+# docker build -t ttonyh/chrome-headless-stable:$VERSION .
+# docker tag ttonyh/chrome-headless-stable:$VERSION ttonyh/chrome-headless-stable:latest
+# docker push ttonyh/chrome-headless-stable:latest
+# docker push ttonyh/chrome-headless-stable:$VERSION
+
+
